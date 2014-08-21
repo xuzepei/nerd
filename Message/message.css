@@ -1,0 +1,15 @@
+
+body{
+font-family:Helvetica;
+font-size:16px;
+word-wrap:break-word;
+
+/** 网页中长按链接不会弹出ActionSheet */
+-webkit-touch-callout:none;
+
+}
+
+.topImage
+{
+height:160.0f;
+}

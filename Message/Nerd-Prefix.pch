@@ -1,0 +1,79 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <CoreData/CoreData.h>
+    #import "RCTool.h"
+#endif
+
+#ifndef DEBUG
+#define NSLog //
+#endif
+
+#define TIME_OUT 20
+
+#define CT_UNKNOWN 0
+#define CT_XML 1
+#define CT_JSON 2
+
+#define NAVIGATION_BAR_COLOR [UIColor colorWithRed:1/255.0 green:164/255.0 blue:241/255.0 alpha:1.0]
+#define TAB_BAR_TEXT_COLOR [UIColor colorWithRed:2/255.0 green:164/255.0 blue:239/255.0 alpha:1.0]
+#define TAB_BAR_COLOR [UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1.0]
+#define BG_COLOR [RCTool colorWithHex:0xdbe0e4]
+
+#define STATUS_BAR_HEIGHT 20.0
+#define NAVIGATION_BAR_HEIGHT 44.0
+#define TAB_BAR_HEIGHT 50.0
+
+#define PICKER_VIEW_HEIGHT 256.0
+
+#define VERSION @"1.0"
+
+
+#define BASE_URL @"http://www.jiecaojie.com/jiecaoapi"
+
+#define UMENG_KEY @"53f2f5f0fd98c5366a007b25"
+
+
+#define APP_URL @"http://itunes.apple.com/app/911189558"
+
+//广告ID
+#define AD_ID @"ca-app-pub-1207330468801232/6263051185"
+#define SCREEN_AD_ID @"ca-app-pub-1207330468801232/7739784383"
+#define SCREEN_AD_RATE 5
+
+//获取协同信息URL
+#define APP_INFO_URL @"http://www.tapguilt.com/api/nerd.php"
+
+//密钥
+#define SECRET_KEY @"20140820"
+
+#define SHOW_ADBANNER_NOTIFICATION @"SHOW_ADBANNER_NOTIFICATION"
+
+#define SHOW_FULLSCREENAD_NOTIFICATION @"SHOW_FULLSCREENAD_NOTIFICATION"
+
+#define TINT_COLOR [RCTool colorWithHex:0xff5aa9]
+
+typedef enum
+{
+    TI_0 = 0,
+    TI_1,
+    TI_2,
+    TI_3,
+    TI_4,
+    TI_5,
+    TI_6,
+    TI_7,
+}TextId;
+
