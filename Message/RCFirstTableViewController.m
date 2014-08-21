@@ -45,10 +45,6 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAdFullScreen:) name:SHOW_FULLSCREENAD_NOTIFICATION object:nil];
     
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"setting"] style:UIBarButtonItemStylePlain target:self action:@selector(clickedRightBarButtonItem:)];
-//    
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"category"] style:UIBarButtonItemStylePlain target:self action:@selector(clickedLeftBarButtonItem:)];
-    
     if([RCTool systemVersion] >= 7.0)
         self.segmentedControl.tintColor = [UIColor clearColor];
     
