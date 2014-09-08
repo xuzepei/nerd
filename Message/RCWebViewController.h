@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UMSocial.h"
 #import "Item.h"
+#import "RCHttpRequest.h"
 
 @class MBProgressHUD;
 @interface RCWebViewController : UIViewController<UIWebViewDelegate,UMSocialUIDelegate>
@@ -23,6 +24,7 @@
 @property(nonatomic,assign)BOOL hideToolbar;
 @property(nonatomic,strong)Item* item;
 @property(nonatomic,strong)MBProgressHUD* indicator2;
+@property(nonatomic,strong)NSString* content;
 
 
 - (id)init:(BOOL)hideToolbar;

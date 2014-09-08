@@ -10,29 +10,29 @@
 	<string>Nerd</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>F3A6D56D-3BA0-42A4-9A2D-C9DF484C97FE</key>
+		<key>E914E580A40BD57DF184ED4133399EDB76CA5B32</key>
 		<string>https://github.com/xuzepei/nerd.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Nerd.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>F3A6D56D-3BA0-42A4-9A2D-C9DF484C97FE</key>
+		<key>E914E580A40BD57DF184ED4133399EDB76CA5B32</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/xuzepei/nerd.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>F3A6D56D-3BA0-42A4-9A2D-C9DF484C97FE</string>
+	<string>E914E580A40BD57DF184ED4133399EDB76CA5B32</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>F3A6D56D-3BA0-42A4-9A2D-C9DF484C97FE</string>
+			<string>E914E580A40BD57DF184ED4133399EDB76CA5B32</string>
 			<key>IDESourceControlWCCName</key>
 			<string>nerd_git</string>
 		</dict>

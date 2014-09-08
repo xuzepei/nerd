@@ -154,20 +154,72 @@
     
     self.item = item;
     self.urlString = urlString;
-    
-    //[self updateToolbarItem];
-    
+
     if(_webView)
     {
-        NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:_urlString]];
-        [_webView loadRequest:request];
+//        if([RCTool isOpenAll])
+//        {
+//            NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:_urlString]];
+//            [_webView loadRequest:request];
+//        }
+//        else{
         
-        //[RCTool showIndicator:@"加载中..."];
-        
+            if(0 == [self.content length])
+            {
+                RCHttpRequest* temp = [[RCHttpRequest alloc] init];
+                BOOL b = [temp request:_urlString delegate:self resultSelector:@selector(requestHttpContentFinished:) token:nil];
+                if(b)
+                {
+                    if(nil == _indicator2)
+                    {
+                        _indicator2 = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                        _indicator2.labelText = @"加载中...";
+                        [_indicator2 show:YES];
+                    }
+                    else
+                        [_indicator2 show:YES];
+                }
+            }
+            else
+            {
+                [_webView loadHTMLString:self.content baseURL:[NSURL URLWithString:_urlString]];
+            }
+            
+        }
+    //}
+}
 
-//        [self performSelector:@selector(webViewDidFinishLoad:) withObject:nil afterDelay:10.0];
-    }
+- (void)requestHttpContentFinished:(NSString*)jsonString
+{
+    if(self.indicator2)
+        [self.indicator2 hide:YES];
     
+    if([jsonString length])
+    {
+        NSString* temp = @"class='cate'>";
+        if(NO == [RCTool isOpenAll])
+            temp = @"相关推荐</div>";
+        NSRange range = [jsonString rangeOfString:temp];
+        if(range.location != NSNotFound)
+        {
+            jsonString = [jsonString substringToIndex:range.location];
+            
+//            range = [jsonString rangeOfString:@"<div class='more'" options:NSBackwardsSearch|NSCaseInsensitiveSearch];
+//            if(range.location != NSNotFound)
+//            jsonString = [jsonString substringToIndex:range.location];
+        }
+    }
+    else
+        return;
+    
+    self.content = [NSString stringWithFormat:@"%@</div></div></body></html>",jsonString];
+    if([self.content length])
+    {
+//        NSString *path = [[NSBundle mainBundle] resourcePath];
+//        path = [path stringByReplacingOccurrencesOfString:@"/" withString:@"//"];
+//        path = [path stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+        [_webView loadHTMLString:self.content baseURL:[NSURL URLWithString:_urlString]];
+    }
 }
 
 #pragma mark - Toolbar
@@ -224,8 +276,11 @@
 
 - (void)clickRefreshItem:(id)sender
 {
-    if(_webView)
-        [_webView reload];
+//    if(_webView)
+//        [_webView reload];
+    
+    self.content = nil;
+    [self updateContent:self.urlString item:self.item];
 
 }
 
@@ -274,6 +329,7 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 	{
 		NSURL* url = [request URL];
 		NSString* urlString = [url absoluteString];
+        
         if(NO == [urlString isEqualToString:self.urlString])
         {
             //url decode
@@ -316,6 +372,7 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     {
         _indicator2 = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         _indicator2.labelText = @"加载中...";
+        [_indicator2 show:YES];
     }
     else
         [_indicator2 show:YES];
@@ -325,6 +382,13 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 {
     if(self.indicator2)
         [self.indicator2 hide:YES];
+    
+//    if(NO == [RCTool isOpenAll])
+//    {
+//        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('more').style.visibility='hidden'"];
+//    }
+//    
+//    [webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('bigbutton').style.visibility='hidden'"];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error

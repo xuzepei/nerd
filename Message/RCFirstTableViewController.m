@@ -52,8 +52,8 @@
     
     [self.segmentedControl setDividerImage:[UIImage imageNamed:@"sg_1"] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
     
-//    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-//    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    if(NO == [RCTool isOpenAll])
+        self.navigationItem.leftBarButtonItem = nil;
     
     if(nil == _itemArray0)
         _itemArray0 = [[NSMutableArray alloc] init];
@@ -150,6 +150,11 @@
         cateId = @"8";
     
     NSString* urlString = [NSString stringWithFormat:@"%@/GetJieList.aspx?c=c&page=%d&cateID=%@&ver=1.5&appid=843664556&channel=appstore&lasttime=",BASE_URL,page,cateId];
+    
+    if(NO == [RCTool isOpenAll])
+    {
+        urlString = [NSString stringWithFormat:@"http://www.tapguilt.com/nerd_list.php?type=%@&page=%d",cateId,page];
+    }
     
     NSDictionary* token = @{@"type":[NSNumber numberWithInt:type],@"page":[NSNumber numberWithInt:page],@"segment_index":[NSNumber numberWithInt:_type]};
     

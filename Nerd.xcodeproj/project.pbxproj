@@ -84,7 +84,6 @@
 		09D43E3E1990AEB600AF2215 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D43E3D1990AEB600AF2215 /* AdSupport.framework */; };
 		09D43E401990AEC000AF2215 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D43E3F1990AEC000AF2215 /* AudioToolbox.framework */; };
 		09D43E421990AEC900AF2215 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D43E411990AEC900AF2215 /* AVFoundation.framework */; };
-		09D43E441990AEE000AF2215 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D43E431990AEE000AF2215 /* iAd.framework */; };
 		09D43E461990AEEA00AF2215 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D43E451990AEEA00AF2215 /* libz.dylib */; };
 		09D43E4C1990AF0400AF2215 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D43E471990AF0400AF2215 /* MediaPlayer.framework */; };
 		09D43E4D1990AF0400AF2215 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D43E481990AF0400AF2215 /* MessageUI.framework */; };
@@ -94,8 +93,8 @@
 		09D43E551990BD3500AF2215 /* RCPublicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D43E521990BD3500AF2215 /* RCPublicCell.m */; };
 		09D43E561990BD3500AF2215 /* RCPublicCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D43E541990BD3500AF2215 /* RCPublicCellContentView.m */; };
 		09D43E591990BDBA00AF2215 /* RCPictureCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D43E581990BDBA00AF2215 /* RCPictureCellContentView.m */; };
-		09D43E5C1990E68500AF2215 /* message.css in Resources */ = {isa = PBXBuildFile; fileRef = 09D43E5A1990E68500AF2215 /* message.css */; };
-		09D43E5D1990E68500AF2215 /* message.js in Sources */ = {isa = PBXBuildFile; fileRef = 09D43E5B1990E68500AF2215 /* message.js */; };
+		09D43E5C1990E68500AF2215 /* nerd.css in Resources */ = {isa = PBXBuildFile; fileRef = 09D43E5A1990E68500AF2215 /* nerd.css */; };
+		09D43E5D1990E68500AF2215 /* nerd.js in Sources */ = {isa = PBXBuildFile; fileRef = 09D43E5B1990E68500AF2215 /* nerd.js */; };
 		09D43E601990EC1F00AF2215 /* SCGIFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D43E5F1990EC1F00AF2215 /* SCGIFImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		09E6E4501991B36E007494BF /* RCSecondTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E6E44E1991B36E007494BF /* RCSecondTableViewController.m */; };
 		09E6E4511991B36E007494BF /* RCSecondTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E6E44F1991B36E007494BF /* RCSecondTableViewController.xib */; };
@@ -124,6 +123,7 @@
 		09E6E49219920107007494BF /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E6E48D19920107007494BF /* libWeChatSDK.a */; };
 		09E6E4941992302E007494BF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E6E4931992302E007494BF /* CoreData.framework */; };
 		09E6E49A199230CC007494BF /* Message.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 09E6E498199230CC007494BF /* Message.xcdatamodeld */; };
+		09EE8ED019BD527E0092A422 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09EE8ECF19BD527E0092A422 /* iAd.framework */; };
 		09F819BE1999F5F800C7B44C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09F819BD1999F5F800C7B44C /* QuartzCore.framework */; };
 		09F819C21999FE7A00C7B44C /* more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F819BF1999FE7A00C7B44C /* more@2x.png */; };
 		09F819C31999FE7A00C7B44C /* picture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F819C01999FE7A00C7B44C /* picture@2x.png */; };
@@ -271,7 +271,6 @@
 		09D43E3D1990AEB600AF2215 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		09D43E3F1990AEC000AF2215 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		09D43E411990AEC900AF2215 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		09D43E431990AEE000AF2215 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		09D43E451990AEEA00AF2215 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		09D43E471990AF0400AF2215 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		09D43E481990AF0400AF2215 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -284,8 +283,8 @@
 		09D43E541990BD3500AF2215 /* RCPublicCellContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCPublicCellContentView.m; sourceTree = "<group>"; };
 		09D43E571990BDBA00AF2215 /* RCPictureCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCPictureCellContentView.h; sourceTree = "<group>"; };
 		09D43E581990BDBA00AF2215 /* RCPictureCellContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCPictureCellContentView.m; sourceTree = "<group>"; };
-		09D43E5A1990E68500AF2215 /* message.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = message.css; sourceTree = "<group>"; };
-		09D43E5B1990E68500AF2215 /* message.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = message.js; sourceTree = "<group>"; };
+		09D43E5A1990E68500AF2215 /* nerd.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = nerd.css; sourceTree = "<group>"; };
+		09D43E5B1990E68500AF2215 /* nerd.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = nerd.js; sourceTree = "<group>"; };
 		09D43E5E1990EC1F00AF2215 /* SCGIFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGIFImageView.h; sourceTree = "<group>"; };
 		09D43E5F1990EC1F00AF2215 /* SCGIFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCGIFImageView.m; sourceTree = "<group>"; };
 		09E6E44D1991B36E007494BF /* RCSecondTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSecondTableViewController.h; sourceTree = "<group>"; };
@@ -328,6 +327,7 @@
 		09E6E49019920107007494BF /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		09E6E4931992302E007494BF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		09E6E499199230CC007494BF /* Message.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Message.xcdatamodel; sourceTree = "<group>"; };
+		09EE8ECF19BD527E0092A422 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		09F819BD1999F5F800C7B44C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		09F819BF1999FE7A00C7B44C /* more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more@2x.png"; sourceTree = "<group>"; };
 		09F819C01999FE7A00C7B44C /* picture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture@2x.png"; sourceTree = "<group>"; };
@@ -339,6 +339,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09EE8ED019BD527E0092A422 /* iAd.framework in Frameworks */,
 				09F819BE1999F5F800C7B44C /* QuartzCore.framework in Frameworks */,
 				09425FA81994B11000611844 /* StoreKit.framework in Frameworks */,
 				09D43E4D1990AF0400AF2215 /* MessageUI.framework in Frameworks */,
@@ -363,7 +364,6 @@
 				09425FA21994B0B700611844 /* libAdapterIAd.a in Frameworks */,
 				09D43E4F1990AF0400AF2215 /* Social.framework in Frameworks */,
 				09D43E501990AF0400AF2215 /* SystemConfiguration.framework in Frameworks */,
-				09D43E441990AEE000AF2215 /* iAd.framework in Frameworks */,
 				09E6E49219920107007494BF /* libWeChatSDK.a in Frameworks */,
 				09D43CC2199099E600AF2215 /* UIKit.framework in Frameworks */,
 				09D43CBE199099E600AF2215 /* Foundation.framework in Frameworks */,
@@ -539,6 +539,7 @@
 		09D43CBC199099E600AF2215 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				09EE8ECF19BD527E0092A422 /* iAd.framework */,
 				09F819BD1999F5F800C7B44C /* QuartzCore.framework */,
 				09425FA71994B11000611844 /* StoreKit.framework */,
 				09E6E4931992302E007494BF /* CoreData.framework */,
@@ -552,7 +553,6 @@
 				09D43E4A1990AF0400AF2215 /* Social.framework */,
 				09D43E4B1990AF0400AF2215 /* SystemConfiguration.framework */,
 				09D43E451990AEEA00AF2215 /* libz.dylib */,
-				09D43E431990AEE000AF2215 /* iAd.framework */,
 				09D43E411990AEC900AF2215 /* AVFoundation.framework */,
 				09D43E3F1990AEC000AF2215 /* AudioToolbox.framework */,
 				09D43E3D1990AEB600AF2215 /* AdSupport.framework */,
@@ -604,8 +604,8 @@
 				09B053D319A18C700097F2AC /* RCVideoCellContentView.m */,
 				090C34B819935BD4002A7DAC /* RCWebViewController.h */,
 				090C34B919935BD4002A7DAC /* RCWebViewController.m */,
-				09D43E5A1990E68500AF2215 /* message.css */,
-				09D43E5B1990E68500AF2215 /* message.js */,
+				09D43E5A1990E68500AF2215 /* nerd.css */,
+				09D43E5B1990E68500AF2215 /* nerd.js */,
 				09D43CCF199099E700AF2215 /* Main_iPhone.storyboard */,
 				09D43CD2199099E700AF2215 /* Main_iPad.storyboard */,
 				09D43CDB199099E700AF2215 /* Images.xcassets */,
@@ -892,7 +892,7 @@
 				09D43CFC1990A7E500AF2215 /* RCFirstTableViewController.xib in Resources */,
 				09D43CC8199099E700AF2215 /* InfoPlist.strings in Resources */,
 				09ABA1D1199E119F007752D6 /* pic_default@2x.png in Resources */,
-				09D43E5C1990E68500AF2215 /* message.css in Resources */,
+				09D43E5C1990E68500AF2215 /* nerd.css in Resources */,
 				09F819C31999FE7A00C7B44C /* picture@2x.png in Resources */,
 				095EC9CB1998898E0075BE9C /* RCMoreTableViewController.xib in Resources */,
 				09E6E47D1991FFDE007494BF /* UMShareEditViewControlleriPad.xib in Resources */,
@@ -947,7 +947,7 @@
 				0971A9EA19A318C700BA1921 /* RCThirdViewController.m in Sources */,
 				09D43CCE199099E700AF2215 /* RCAppDelegate.m in Sources */,
 				09D43E601990EC1F00AF2215 /* SCGIFImageView.m in Sources */,
-				09D43E5D1990E68500AF2215 /* message.js in Sources */,
+				09D43E5D1990E68500AF2215 /* nerd.js in Sources */,
 				09BB1EBE199C864D005FC344 /* GzipCompressor.m in Sources */,
 				09D43D081990ABCC00AF2215 /* RCTool.mm in Sources */,
 				0971A9E419A2FC6900BA1921 /* RCCategoryTableViewCell.m in Sources */,
@@ -1107,7 +1107,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Message/Nerd-Prefix.pch";
 				INFOPLIST_FILE = "Message/Nerd-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Message/ThirdParty/ZBarSDK",
@@ -1123,6 +1123,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Nerd;
 				PROVISIONING_PROFILE = "85fed65b-fdf6-4dea-b06f-da686aa64ce3";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1138,7 +1139,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Message/Nerd-Prefix.pch";
 				INFOPLIST_FILE = "Message/Nerd-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Message/ThirdParty/ZBarSDK",
@@ -1153,6 +1154,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Nerd;
 				PROVISIONING_PROFILE = "dea1aaab-f526-44f6-99ad-cd836e3d4555";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

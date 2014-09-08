@@ -274,14 +274,8 @@
         [self.adMobAd removeFromSuperview];
         self.adMobAd = nil;
     }
-    
-    if(self.adView && self.adView.superview)
-    {
-        [self.adView removeFromSuperview];
-        self.adView = nil;
-    }
+
     self.adInterstitial = nil;
-    self.interstitial = nil;
 	
 	[self initAdMob];
     
@@ -365,10 +359,6 @@ didFailToReceiveAdWithError:(GADRequestError *)error
     if(_adInterstitial)
     {
         [_adInterstitial presentFromRootViewController:rootViewController];
-    }
-    else if(self.interstitial && self.interstitial.loaded)
-    {
-        [self.interstitial presentFromViewController:rootViewController];
     }
 }
 

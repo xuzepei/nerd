@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "GADBannerView.h"
 #import "GADInterstitial.h"
-#import <iAd/iAd.h>
 
 @interface RCAppDelegate : UIResponder <UIApplicationDelegate,GADBannerViewDelegate,GADInterstitialDelegate,UIAlertViewDelegate>
 
@@ -22,10 +21,6 @@
 @property (nonatomic, strong) GADBannerView *adMobAd;
 @property (assign)BOOL isAdMobVisible;
 @property (nonatomic, strong) GADInterstitial *adInterstitial;
-
-@property (nonatomic, strong) ADBannerView *adView;
-@property (assign)BOOL isAdViewVisible;
-@property (nonatomic, strong) ADInterstitialAd* interstitial;
 
 @property (nonatomic,strong) NSString* ad_id;
 @property (nonatomic,assign)BOOL showFullScreenAd;
