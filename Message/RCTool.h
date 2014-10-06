@@ -66,7 +66,6 @@
 + (void)saveCoreData;
 
 #pragma mark - App Info
-
 + (NSString*)getAdId;
 + (NSString*)getScreenAdId;
 + (int)getScreenAdRate;
@@ -77,5 +76,7 @@
 + (NSString*)getTextById:(NSString*)textId;
 + (NSArray*)getOtherApps;
 + (NSDictionary*)getAlert;
++ (NSString*)getUrlByType:(int)type;
++ (BOOL)isEncrypted:(int)type;
 
 @end

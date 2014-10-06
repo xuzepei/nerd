@@ -100,11 +100,13 @@
     if(nil == category)
         return;
     
+    self.category = category;
+    
     int cateId = [[category objectForKey:@"CateID"] intValue];
     
     self.title = [category objectForKey:@"CateName"];
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/GetJieList.aspx?c=c&page=%d&cateID=%d&ver=1.5&appid=843664556&channel=appstore&lasttime=",BASE_URL,page,cateId];
+    NSString* urlString = [NSString stringWithFormat:@"%@&page=%d&cateID=%d",[RCTool getUrlByType:1],page,cateId];
     
     NSDictionary* token = @{@"type":[NSNumber numberWithInt:type],@"page":[NSNumber numberWithInt:page]};
     
@@ -114,7 +116,7 @@
     {
         if(0 == [self.itemArray0 count])
         {
-            [RCTool showIndicator:@"加载中..."];
+            //[RCTool showIndicator:@"加载中..."];
         }
     }
 }
@@ -139,6 +141,9 @@
     {
         return;
     }
+    
+    if([RCTool isEncrypted:1])
+        jsonString = [RCTool decrypt:jsonString];
     
     NSDictionary* dict = [RCTool parseToDictionary:jsonString];
     if(nil == dict || NO == [dict isKindOfClass:[NSDictionary class]])

@@ -71,7 +71,7 @@
 - (void)updateContent
 {
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/GetJieCate.aspx?c=c&ver=1.5&appid=843664556&channel=appstore",BASE_URL];
+    NSString* urlString = [NSString stringWithFormat:@"%@",[RCTool getUrlByType:2]];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];
     BOOL b = [temp request:urlString delegate:self resultSelector:@selector(finishedContentRequest:) token:nil];
@@ -79,7 +79,7 @@
     {
         if(0 == [self.itemArray0 count])
         {
-            [RCTool showIndicator:@"加载中..."];
+            //[RCTool showIndicator:@"加载中..."];
         }
     }
     
@@ -93,6 +93,9 @@
     {
         return;
     }
+    
+    if([RCTool isEncrypted:2])
+            jsonString = [RCTool decrypt:jsonString];
     
     NSDictionary* dict = [RCTool parseToDictionary:jsonString];
     NSArray* array = [dict objectForKey:@"list"];

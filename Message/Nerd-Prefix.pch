@@ -38,15 +38,19 @@
 
 #define PICKER_VIEW_HEIGHT 256.0
 
-#define VERSION @"1.0"
+#define VERSION @"1.1"
 
-
+//URL
 #define BASE_URL @"http://www.jiecaojie.com/jiecaoapi"
+#define URL_0 @"http://www.jiecaojie.com/jiecaoapi/GetJieList.aspx?c=c&ver=1.5&appid=843664556&channel=appstore"
+#define URL_1 @"http://www.jiecaojie.com/jiecaoapi/GetJieList.aspx?c=c&ver=1.5&appid=843664556&channel=appstore"
+#define URL_2 @"http://www.jiecaojie.com/jiecaoapi/GetJieCate.aspx?c=c&ver=1.5&appid=843664556&channel=appstore"
+#define URL_3 @""
 
 #define UMENG_KEY @"53f2f5f0fd98c5366a007b25"
 
 
-#define APP_URL @"http://itunes.apple.com/app/911189558"
+#define APP_URL @"https://itunes.apple.com/app/id911189558?mt=8"
 
 //广告ID
 #define AD_ID @"ca-app-pub-1207330468801232/6263051185"
@@ -54,7 +58,7 @@
 #define SCREEN_AD_RATE 5
 
 //获取协同信息URL
-#define APP_INFO_URL @"http://www.tapguilt.com/api/nerd.php"
+#define APP_INFO_URL @"http://www.tapguilt.com/api/nerd.php?v=1.1"
 
 //密钥
 #define SECRET_KEY @"20140820"
@@ -62,6 +66,8 @@
 #define SHOW_ADBANNER_NOTIFICATION @"SHOW_ADBANNER_NOTIFICATION"
 
 #define SHOW_FULLSCREENAD_NOTIFICATION @"SHOW_FULLSCREENAD_NOTIFICATION"
+
+#define REFREACH_CONTENT_NOTIFICATION @"REFREACH_CONTENT_NOTIFICATION"
 
 #define TINT_COLOR [RCTool colorWithHex:0xff5aa9]
 

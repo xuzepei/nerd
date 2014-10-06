@@ -592,22 +592,22 @@
 
 + (UIView*)getAdView
 {
-	RCAppDelegate* appDelegate = (RCAppDelegate*)[[UIApplication sharedApplication] delegate];
+    RCAppDelegate* appDelegate = (RCAppDelegate*)[[UIApplication sharedApplication] delegate];
     
-    if(appDelegate.adMobAd.alpha)
+    if(appDelegate.adMobAd)
     {
         UIView* adView = appDelegate.adMobAd;
         if(adView)
             return adView;
     }
-	
-	return nil;
+    
+    return nil;
 }
 
 + (NSString*)decryptUseDES:(NSString*)cipherText key:(NSString*)key {
     // 利用 GTMBase64 解碼 Base64 字串
     NSData* cipherData = [GTMBase64 decodeString:cipherText];
-    unsigned char buffer[4096];
+    unsigned char buffer[4096*100];
     memset(buffer, 0, sizeof(char));
     size_t numBytesDecrypted = 0;
     
@@ -621,7 +621,7 @@
                                           [cipherData bytes],
                                           [cipherData length],
                                           buffer,
-                                          4096,
+                                          4096*100,
                                           &numBytesDecrypted);
     NSString* plainText = nil;
     if (cryptStatus == kCCSuccess) {
@@ -634,7 +634,7 @@
 + (NSString *)encryptUseDES:(NSString *)clearText key:(NSString *)key
 {
     NSData *data = [clearText dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
-    unsigned char buffer[4096];
+    unsigned char buffer[4096*100];
     memset(buffer, 0, sizeof(char));
     size_t numBytesEncrypted = 0;
     
@@ -647,7 +647,7 @@
                                           [data bytes],
                                           [data length],
                                           buffer,
-                                          4096,
+                                          4096*100,
                                           &numBytesEncrypted);
     
     NSString* plainText = nil;
@@ -740,7 +740,7 @@
     {
         return @"正在帮你加载中...";
     }
-
+    
     return @"";
 }
 
@@ -772,6 +772,74 @@
     }
     
     return nil;
+}
+
++ (NSString*)getUrlByType:(int)type
+{
+    NSDictionary* app_info = [[NSUserDefaults standardUserDefaults] objectForKey:@"app_info"];
+    
+    if(0 == type)
+    {
+        if(app_info && [app_info isKindOfClass:[NSDictionary class]])
+        {
+            NSString* url = [app_info objectForKey:@"url_0"];
+            if([url length])
+                return url;
+        }
+        
+        return URL_0;
+    }
+    else if(1 == type)
+    {
+        if(app_info && [app_info isKindOfClass:[NSDictionary class]])
+        {
+            NSString* url = [app_info objectForKey:@"url_1"];
+            if([url length])
+                return url;
+        }
+        
+        return URL_1;
+    }
+    else if(2 == type)
+    {
+        if(app_info && [app_info isKindOfClass:[NSDictionary class]])
+        {
+            NSString* url = [app_info objectForKey:@"url_2"];
+            if([url length])
+                return url;
+        }
+        
+        return URL_2;
+    }
+    else if(3 == type)
+    {
+        if(app_info && [app_info isKindOfClass:[NSDictionary class]])
+        {
+            NSString* url = [app_info objectForKey:@"url_3"];
+            if([url length])
+                return url;
+        }
+        
+        return URL_3;
+    }
+    
+    return @"";
+}
+
++ (BOOL)isEncrypted:(int)type
+{
+    NSDictionary* app_info = [[NSUserDefaults standardUserDefaults] objectForKey:@"app_info"];
+    
+    if(app_info && [app_info isKindOfClass:[NSDictionary class]])
+    {
+        NSString* temp = [app_info objectForKey:[NSString stringWithFormat:@"url_%d_en",type]];
+        if([temp isEqualToString:@"1"])
+        {
+            return YES;
+        }
+    }
+
+    return NO;
 }
 
 

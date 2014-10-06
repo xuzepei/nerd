@@ -221,6 +221,8 @@
         [[NSUserDefaults standardUserDefaults] setObject:result forKey:@"app_info"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
+        [[NSNotificationCenter defaultCenter] postNotificationName:REFREACH_CONTENT_NOTIFICATION object:nil];
+        
         [self doAlert];
         
         self.ad_id = [RCTool getAdId];
@@ -239,24 +241,8 @@
 		_adMobAd = nil;
 	}
     
-	if(NO == [RCTool isIpad])
-	{
-		_adMobAd = [[GADBannerView alloc]
-                    initWithFrame:CGRectMake(0.0,0,
-                                             320.0f,
-                                             50.0f)];
-	}
-	else
-	{
-        _adMobAd = [[GADBannerView alloc]
-                    initWithFrame:CGRectMake(0.0,0,
-                                             728.0f,
-                                             90.0f)];
-	}
-    
-	
-	
-	
+    _adMobAd = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
+
 	_adMobAd.adUnitID = [RCTool getAdId];
 	_adMobAd.delegate = self;
 	_adMobAd.alpha = 0.0;
@@ -301,8 +287,6 @@
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_ADBANNER_NOTIFICATION object:nil userInfo:nil];
-    
-    //[[RCTool getTabBarController].view addSubview:_adMobAd];
 }
 
 - (void)adView:(GADBannerView *)bannerView
@@ -417,6 +401,20 @@ didFailToReceiveAdWithError:(GADRequestError *)error
     NSDictionary* alert = [RCTool getAlert];
     if(alert)
     {
+        NSString* id = [alert objectForKey:@"id"];
+        if([id length])
+        {
+            NSString* record = [[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"alert_%@",id]];
+            
+            if([record length])
+                return;
+            else
+            {
+                [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:[NSString stringWithFormat:@"alert_%@",id]];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
+        }
+        
         int type = [[alert objectForKey:@"type"] intValue];
         NSString* title = [alert objectForKey:@"title"];
         NSString* message = [alert objectForKey:@"message"];

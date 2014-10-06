@@ -45,6 +45,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAdFullScreen:) name:SHOW_FULLSCREENAD_NOTIFICATION object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshContent:) name:REFREACH_CONTENT_NOTIFICATION object:nil];
+    
     if([RCTool systemVersion] >= 7.0)
         self.segmentedControl.tintColor = [UIColor clearColor];
     
@@ -149,12 +151,12 @@
     if(1 == _type)
         cateId = @"8";
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/GetJieList.aspx?c=c&page=%d&cateID=%@&ver=1.5&appid=843664556&channel=appstore&lasttime=",BASE_URL,page,cateId];
+    NSString* urlString = [NSString stringWithFormat:@"%@&page=%d&cateID=%@",[RCTool getUrlByType:0],page,cateId];
     
-    if(NO == [RCTool isOpenAll])
-    {
-        urlString = [NSString stringWithFormat:@"http://www.tapguilt.com/nerd_list.php?type=%@&page=%d",cateId,page];
-    }
+//    if(NO == [RCTool isOpenAll])
+//    {
+//        urlString = [NSString stringWithFormat:@"http://www.tapguilt.com/nerd_list.php?type=%@&page=%d",cateId,page];
+//    }
     
     NSDictionary* token = @{@"type":[NSNumber numberWithInt:type],@"page":[NSNumber numberWithInt:page],@"segment_index":[NSNumber numberWithInt:_type]};
     
@@ -164,11 +166,11 @@
     {
         if(0 == [self.itemArray0 count] && 0 == _type)
         {
-            [RCTool showIndicator:@"加载中..."];
+            //[RCTool showIndicator:@"加载中..."];
         }
         else if(0 == [self.itemArray1 count] && 1 == _type)
         {
-            [RCTool showIndicator:@"加载中..."];
+            //[RCTool showIndicator:@"加载中..."];
         }
     }
 }
@@ -194,6 +196,9 @@
     {
         return;
     }
+    
+    if([RCTool isEncrypted:0])
+        jsonString = [RCTool decrypt:jsonString];
     
     NSDictionary* dict = [RCTool parseToDictionary:jsonString];
     if(nil == dict || NO == [dict isKindOfClass:[NSDictionary class]])
@@ -504,6 +509,19 @@
 
 
 #pragma mark -
+
+- (void)refreshContent:(NSNotification*)noti
+{
+    [self headerRereshing];
+    
+    if([RCTool isOpenAll])
+    {
+        UIBarButtonItem* leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"category"] style:UIBarButtonItemStylePlain target:self action:@selector(clickedLeftBarButtonItem:)];
+        self.navigationItem.leftBarButtonItem = leftBarButtonItem;
+    }
+    else
+        self.navigationItem.leftBarButtonItem = nil;
+}
 
 - (void)showAdBanner:(NSNotification*)noti
 {
