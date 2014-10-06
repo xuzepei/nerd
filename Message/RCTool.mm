@@ -778,48 +778,29 @@
 {
     NSDictionary* app_info = [[NSUserDefaults standardUserDefaults] objectForKey:@"app_info"];
     
+    if(app_info && [app_info isKindOfClass:[NSDictionary class]])
+    {
+        NSDictionary* info = [app_info objectForKey:[NSString stringWithFormat:@"url_info_%d",type]];
+        if(info && [info isKindOfClass:[NSDictionary class]])
+        {
+            return [info objectForKey:@"url"];
+        }
+    }
+    
     if(0 == type)
     {
-        if(app_info && [app_info isKindOfClass:[NSDictionary class]])
-        {
-            NSString* url = [app_info objectForKey:@"url_0"];
-            if([url length])
-                return url;
-        }
-        
         return URL_0;
     }
     else if(1 == type)
     {
-        if(app_info && [app_info isKindOfClass:[NSDictionary class]])
-        {
-            NSString* url = [app_info objectForKey:@"url_1"];
-            if([url length])
-                return url;
-        }
-        
         return URL_1;
     }
     else if(2 == type)
     {
-        if(app_info && [app_info isKindOfClass:[NSDictionary class]])
-        {
-            NSString* url = [app_info objectForKey:@"url_2"];
-            if([url length])
-                return url;
-        }
-        
         return URL_2;
     }
     else if(3 == type)
     {
-        if(app_info && [app_info isKindOfClass:[NSDictionary class]])
-        {
-            NSString* url = [app_info objectForKey:@"url_3"];
-            if([url length])
-                return url;
-        }
-        
         return URL_3;
     }
     
@@ -832,14 +813,14 @@
     
     if(app_info && [app_info isKindOfClass:[NSDictionary class]])
     {
-        NSString* temp = [app_info objectForKey:[NSString stringWithFormat:@"url_%d_en",type]];
-        if([temp isEqualToString:@"1"])
+        NSDictionary* info = [app_info objectForKey:[NSString stringWithFormat:@"url_info_%d",type]];
+        if(info && [info isKindOfClass:[NSDictionary class]])
         {
-            return YES;
+            return [[info objectForKey:@"isen"] isEqualToString:@"1"];
         }
     }
 
-    return NO;
+    return YES;
 }
 
 

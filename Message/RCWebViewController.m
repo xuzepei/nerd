@@ -32,12 +32,10 @@
         UIBarButtonItem* shareItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"repost"] style:UIBarButtonItemStylePlain  target:self action:@selector(clickedShareButtonItem:)];
         
         UIBarButtonItem* refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(clickedRefreshButtonItem:)];
-
+        
         self.navigationItem.rightBarButtonItems = @[refreshItem,shareItem];
         
         [self initWebView];
-        
-        //[self initToolbar];
         
     }
     return self;
@@ -58,7 +56,7 @@
     self.toolbar = nil;
     self.backwardItem = nil;
     self.forwardItem = nil;
-
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -71,7 +69,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAdBanner:) name:SHOW_ADBANNER_NOTIFICATION object:nil];
     
@@ -95,7 +93,8 @@
 
 - (void)clickedRefreshButtonItem:(id)sender
 {
-    [self clickRefreshItem:nil];
+    self.content = nil;
+    [self updateContent:self.urlString item:self.item];
 }
 
 #pragma mark - Share
@@ -154,39 +153,31 @@
     
     self.item = item;
     self.urlString = urlString;
-
+    
     if(_webView)
     {
-//        if([RCTool isOpenAll])
-//        {
-//            NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:_urlString]];
-//            [_webView loadRequest:request];
-//        }
-//        else{
-        
-            if(0 == [self.content length])
+        if(0 == [self.content length])
+        {
+            RCHttpRequest* temp = [[RCHttpRequest alloc] init];
+            BOOL b = [temp request:_urlString delegate:self resultSelector:@selector(requestHttpContentFinished:) token:nil];
+            if(b)
             {
-                RCHttpRequest* temp = [[RCHttpRequest alloc] init];
-                BOOL b = [temp request:_urlString delegate:self resultSelector:@selector(requestHttpContentFinished:) token:nil];
-                if(b)
+                if(nil == _indicator2)
                 {
-                    if(nil == _indicator2)
-                    {
-                        _indicator2 = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                        _indicator2.labelText = @"加载中...";
-                        [_indicator2 show:YES];
-                    }
-                    else
-                        [_indicator2 show:YES];
+                    _indicator2 = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                    _indicator2.labelText = @"加载中...";
+                    [_indicator2 show:YES];
                 }
+                else
+                    [_indicator2 show:YES];
             }
-            else
-            {
-                [_webView loadHTMLString:self.content baseURL:[NSURL URLWithString:_urlString]];
-            }
-            
         }
-    //}
+        else
+        {
+            [_webView loadHTMLString:self.content baseURL:[NSURL URLWithString:_urlString]];
+        }
+        
+    }
 }
 
 - (void)requestHttpContentFinished:(NSString*)jsonString
@@ -199,102 +190,30 @@
         NSString* temp = @"class='cate'>";
         if(NO == [RCTool isOpenAll])
             temp = @"相关推荐</div>";
+
+        NSString* temp1 = @"iPhone: u.indexOf('iPhone') > -1";
+        jsonString = [jsonString stringByReplacingOccurrencesOfString:temp1 withString:@"iPhone: 1"];
+ 
         NSRange range = [jsonString rangeOfString:temp];
         if(range.location != NSNotFound)
         {
             jsonString = [jsonString substringToIndex:range.location];
             
-//            range = [jsonString rangeOfString:@"<div class='more'" options:NSBackwardsSearch|NSCaseInsensitiveSearch];
-//            if(range.location != NSNotFound)
-//            jsonString = [jsonString substringToIndex:range.location];
         }
+        
+        self.content = [NSString stringWithFormat:@"%@</div></div></body></html>",jsonString];
     }
     else
         return;
     
-    self.content = [NSString stringWithFormat:@"%@</div></div></body></html>",jsonString];
+    
     if([self.content length])
     {
-//        NSString *path = [[NSBundle mainBundle] resourcePath];
-//        path = [path stringByReplacingOccurrencesOfString:@"/" withString:@"//"];
-//        path = [path stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+        //        NSString *path = [[NSBundle mainBundle] resourcePath];
+        //        path = [path stringByReplacingOccurrencesOfString:@"/" withString:@"//"];
+        //        path = [path stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
         [_webView loadHTMLString:self.content baseURL:[NSURL URLWithString:_urlString]];
     }
-}
-
-#pragma mark - Toolbar
-
-- (void)initToolbar
-{
-    if (nil == _toolbar) {
-        _toolbar = [[UIToolbar alloc] initWithFrame: CGRectMake(0,[RCTool getScreenSize].height - NAVIGATION_BAR_HEIGHT*2 - STATUS_BAR_HEIGHT,[RCTool getScreenSize].width,NAVIGATION_BAR_HEIGHT)];
-        
-        _toolbar.barStyle = UIBarStyleBlack;
-        
-        UIBarButtonItem* fixedSpaceItem0 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
-                                                                                          target:nil
-                                                                                          action:nil];
-        fixedSpaceItem0.width = 180;
-        
-        UIBarButtonItem* fixedSpaceItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
-                                                                                          target:nil
-                                                                                          action:nil];
-        fixedSpaceItem1.width = 50;
-        
-        
-//        UIBarButtonItem* refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-//                                                                                     target:self
-//                                                                                     action:@selector(clickRefreshItem:)];
-        
-        self.backwardItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"browse_backward"]
-                                                               style:UIBarButtonItemStylePlain
-                                                              target:self
-                                                              action:@selector(clickBackwardItem:)];
-        _backwardItem.enabled = NO;
-        
-        self.forwardItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"browse_forward"]
-                                                              style:UIBarButtonItemStylePlain
-                                                             target:self
-                                                             action:@selector(clickForwardItem:)];
-        
-        _forwardItem.enabled = NO;
-        
-        [_toolbar setItems:[NSArray arrayWithObjects: /*refreshItem,*/fixedSpaceItem0,_backwardItem,fixedSpaceItem1,_forwardItem,nil]
-                  animated: NO];
-
-    }
-	
-	[self.view addSubview:_toolbar];
-
-}
-
-- (void)updateToolbarItem
-{
-	_backwardItem.enabled = _webView.canGoBack? YES:NO;
-	_forwardItem.enabled = _webView.canGoForward? YES:NO;
-}
-
-- (void)clickRefreshItem:(id)sender
-{
-//    if(_webView)
-//        [_webView reload];
-    
-    self.content = nil;
-    [self updateContent:self.urlString item:self.item];
-
-}
-
-- (void)clickBackwardItem:(id)sender
-{
-    if(_webView)
-        [_webView goBack];
-	
-}
-
-- (void)clickForwardItem:(id)sender
-{
-    if(_webView)
-        [_webView goForward];
 }
 
 #pragma mark - WebView
@@ -305,7 +224,7 @@
         _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,[RCTool getScreenSize].width,[RCTool getScreenSize].height - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT)];
         _webView.delegate = self;
     }
-
+    
     [self.view addSubview: _webView];
     
     if (nil == _indicator) {
@@ -325,17 +244,17 @@
 shouldStartLoadWithRequest:(NSURLRequest *)request
  navigationType:(UIWebViewNavigationType)navigationType
 {
-	if(request)
-	{
-		NSURL* url = [request URL];
-		NSString* urlString = [url absoluteString];
+    if(request)
+    {
+        NSURL* url = [request URL];
+        NSString* urlString = [url absoluteString];
         
         if(NO == [urlString isEqualToString:self.urlString])
         {
             //url decode
             urlString = [[urlString
-                    stringByReplacingOccurrencesOfString:@"+" withString:@" "]
-                stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                          stringByReplacingOccurrencesOfString:@"+" withString:@" "]
+                         stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             NSRange range = [urlString rangeOfString:@"http://m.jiecaojie.com/jieapp_art|" options:NSCaseInsensitiveSearch];
             if(range.location != NSNotFound)
             {
@@ -358,12 +277,12 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
                     }
                 }
             }
-
+            
             
         }
-	}
+    }
     
-	return YES;
+    return YES;
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
@@ -383,12 +302,12 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     if(self.indicator2)
         [self.indicator2 hide:YES];
     
-//    if(NO == [RCTool isOpenAll])
-//    {
-//        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('more').style.visibility='hidden'"];
-//    }
-//    
-//    [webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('bigbutton').style.visibility='hidden'"];
+    //    if(NO == [RCTool isOpenAll])
+    //    {
+    //        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('more').style.visibility='hidden'"];
+    //    }
+    //
+    //    [webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('bigbutton').style.visibility='hidden'"];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error

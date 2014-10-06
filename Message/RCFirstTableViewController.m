@@ -152,12 +152,7 @@
         cateId = @"8";
     
     NSString* urlString = [NSString stringWithFormat:@"%@&page=%d&cateID=%@",[RCTool getUrlByType:0],page,cateId];
-    
-//    if(NO == [RCTool isOpenAll])
-//    {
-//        urlString = [NSString stringWithFormat:@"http://www.tapguilt.com/nerd_list.php?type=%@&page=%d",cateId,page];
-//    }
-    
+
     NSDictionary* token = @{@"type":[NSNumber numberWithInt:type],@"page":[NSNumber numberWithInt:page],@"segment_index":[NSNumber numberWithInt:_type]};
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init] ;

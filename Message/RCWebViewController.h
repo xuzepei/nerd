@@ -28,9 +28,7 @@
 
 
 - (id)init:(BOOL)hideToolbar;
-- (void)initToolbar;
 - (void)initWebView;
 - (void)updateContent:(NSString *)urlString item:(Item*)item;
-- (void)updateToolbarItem;
 
 @end

@@ -42,9 +42,9 @@
 
 //URL
 #define BASE_URL @"http://www.jiecaojie.com/jiecaoapi"
-#define URL_0 @"http://www.jiecaojie.com/jiecaoapi/GetJieList.aspx?c=c&ver=1.5&appid=843664556&channel=appstore"
-#define URL_1 @"http://www.jiecaojie.com/jiecaoapi/GetJieList.aspx?c=c&ver=1.5&appid=843664556&channel=appstore"
-#define URL_2 @"http://www.jiecaojie.com/jiecaoapi/GetJieCate.aspx?c=c&ver=1.5&appid=843664556&channel=appstore"
+#define URL_0 @"http://www.tapguilt.com/nerd_list.php?"
+#define URL_1 @"http://www.tapguilt.com/nerd_list.php?"
+#define URL_2 @"http://www.tapguilt.com/nerd_category.php"
 #define URL_3 @""
 
 #define UMENG_KEY @"53f2f5f0fd98c5366a007b25"
